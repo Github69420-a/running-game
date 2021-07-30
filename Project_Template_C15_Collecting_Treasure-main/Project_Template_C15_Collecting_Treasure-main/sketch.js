@@ -9,6 +9,7 @@ var gameState="play";
 function preload(){
   pathImg = loadImage("Road.png");
   boyImg = loadAnimation("Runner-1.png","Runner-2.png");
+  dethImg = loadAnimation("gameOver.png");
   cashImg = loadImage("cash.png");
   diamondsImg = loadImage("diamonds.png");
   jwelleryImg = loadImage("jwell.png");
@@ -28,6 +29,7 @@ function setup(){
   //creating boy running
   boy = createSprite(70,580,20,20);
   boy.addAnimation("SahilRunning",boyImg);
+  boy.addAnimation("death", dethImg);
   boy.scale=0.08;
   
   
@@ -85,7 +87,10 @@ function draw() {
     jwelleryG.setVelocityYEach(0);
     jwelleryG.destroyEach();
     swordGroup.setVelocityYEach(0);
-    swordGroups.destroyEach();
+    swordGroup.destroyEach();
+    boy.changeAnimation("death", dethImg);
+    //drawSprites();
+    boy.scale = 1.1;
   }
   drawSprites();
   textSize(20);
